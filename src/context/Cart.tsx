@@ -1,5 +1,5 @@
-import React, { useEffect, useContext, useReducer } from "react";
-// import reducer from '../reducers/cart_reducer'
+import React, { useEffect, useContext, useReducer, createContext } from "react";
+import reducer from "../reducers/cart_reducer";
 import {
   ADD_TO_CART,
   REMOVE_CART_ITEM,
@@ -7,18 +7,41 @@ import {
   CLEAR_CART,
   COUNT_CART_TOTALS,
 } from "../actions";
+import { CartState } from "../interface";
 
-const initialState = {};
+const initialState: CartState = {
+  cart: [],
+  totalItems: 0,
+  totalAmount: 0,
+  shippingFee: 534,
+};
 
-const CartContext = React.createContext(initialState);
+type CartContentState = CartState & {
+  addToCart: (id: string, color: string, amount: number, product: any) => void;
+};
+
+const CartContext = createContext<CartContentState>({} as CartContentState);
 
 interface CartProviderProps {
   children: React.ReactNode;
 }
 
 export const CartProvider = ({ children }: CartProviderProps) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const addToCart = (
+    id: string,
+    color: string,
+    amount: number,
+    product: any
+  ) => {
+    dispatch({ type: ADD_TO_CART, payload: { id, color, amount, product } });
+  };
+
   return (
-    <CartContext.Provider value="cart context">{children}</CartContext.Provider>
+    <CartContext.Provider value={{ ...state, addToCart }}>
+      {children}
+    </CartContext.Provider>
   );
 };
 // make sure use

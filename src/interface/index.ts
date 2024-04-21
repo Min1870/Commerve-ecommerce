@@ -49,7 +49,7 @@ export interface ProductsState {
   singleProduct: SingleProduct;
 }
 
-export interface ProductImage  {
+export interface ProductImage {
   id: string;
   width: number;
   height: number;
@@ -58,4 +58,28 @@ export interface ProductImage  {
   size: number;
   type: string;
   thumbnails: any[];
+}
+
+export type FilterState = {
+  filteredProducts: any[];
+  allProducts: any[];
+  gridView: boolean;
+  sort: string;
+  filters: {
+    text: string;
+    company: string;
+    category: string;
+    color: string;
+    minPrice: number;
+    maxPrice: number;
+    price: number;
+    shipping: boolean;
+  };
 };
+
+export interface CartState {
+  cart: any[];
+  totalItems: number;
+  totalAmount: number;
+  shippingFee: number;
+}
