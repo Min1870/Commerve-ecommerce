@@ -1,5 +1,6 @@
 // import { Route, Redirect } from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
+import { Navigate } from "react-router-dom";
 // will remove later
 // import { useUserContext } from '../context/user_context';
 interface PrivateRouteProps {
@@ -7,6 +8,7 @@ interface PrivateRouteProps {
 }
 
 const PrivateRoute = ({ children }: PrivateRouteProps) => {
-  return <h4>Private Route</h4>;
+  const { user } = useAuth0();
+  return <>{user ? children : <Navigate to="/"></Navigate>}</>;
 };
 export default PrivateRoute;

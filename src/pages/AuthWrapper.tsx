@@ -1,12 +1,32 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import styled from "styled-components";
+import Loading from "../components/Loading";
 
 interface AuthWrapperProps {
   children: React.ReactNode;
 }
 
 const AuthWrapper = ({ children }: AuthWrapperProps) => {
-  return <h4>AuthWrapper</h4>;
+  const { isLoading, error } = useAuth0();
+
+  if (isLoading) {
+    return (
+      <Wrapper>
+        {/* <h1>Loading...</h1> */}
+        <Loading/>
+      </Wrapper>
+    );
+  }
+
+  if (error) {
+    return (
+      <Wrapper>
+        <h1>{error.message}</h1>
+      </Wrapper>
+    );
+  }
+
+  return <>{children}</>;
 };
 
 const Wrapper = styled.section`

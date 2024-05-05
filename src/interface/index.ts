@@ -78,8 +78,18 @@ export type FilterState = {
 };
 
 export interface CartState {
-  cart: any[];
+  cart: CartItem[];
   totalItems: number;
   totalAmount: number;
   shippingFee: number;
 }
+
+export type CartItem = {
+  id: string;
+  name: string;
+  color: string;
+  amount: number;
+  image: any;
+  price: number;
+  max: number;
+};

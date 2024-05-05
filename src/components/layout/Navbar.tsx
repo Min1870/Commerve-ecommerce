@@ -8,6 +8,7 @@ import { useUserContext } from "../../context/User";
 
 const Nav = () => {
   const { toggleSidebar } = useUserContext();
+  const {myUser} = useUserContext()
   return (
     <NavContainer>
       <div className="nav-center">
@@ -32,6 +33,11 @@ const Nav = () => {
               </li>
             );
           })}
+          {
+            myUser && <li>
+              <Link to="/checkout">checkout</Link>
+            </li>
+          }
         </ul>
         <CartButtons />
       </div>

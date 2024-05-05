@@ -7,14 +7,14 @@ interface PageHeroProps {
 
 const PageHero = ({ title }: PageHeroProps) => {
   const { pathname } = useLocation();
-  const isProductsIncluded = pathname.includes('products');
+  const isProductsIncluded = pathname.includes("products");
   return (
     <Wrapper>
       <div className="section-center">
         <h3>
-        <Link to="/">Home</Link>
+          <Link to="/">Home</Link>
           {isProductsIncluded && <Link to="/products">/ Products</Link>}
-          {title && `/ ${title}`}
+          {title === "products" ? "" : `/ ${title}`}
         </h3>
       </div>
     </Wrapper>

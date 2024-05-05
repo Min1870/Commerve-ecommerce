@@ -1,7 +1,12 @@
+import { AuthWrapper } from "./pages";
 import { Routes } from "./routes";
 
 const App = () => {
-  return <Routes />;
+  return (
+    <AuthWrapper>
+      <Routes />;
+    </AuthWrapper>
+  );
 };
 
 export default App;

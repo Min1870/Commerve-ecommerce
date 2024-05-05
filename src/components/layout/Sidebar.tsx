@@ -9,8 +9,8 @@ import clsx from "clsx";
 import { useUserContext } from "../../context/User";
 
 const Sidebar = () => {
-  const isOpen = false;
   const { isSidebarOpen, toggleSidebar } = useUserContext();
+  const { myUser } = useUserContext();
   return (
     <SidebarContainer>
       <aside className={clsx(isSidebarOpen && "show-sidebar", "sidebar")}>
@@ -33,11 +33,13 @@ const Sidebar = () => {
               </li>
             );
           })}
-          <li>
-            <Link onClick={() => toggleSidebar("close")} to="/checkout">
-              Checkout
-            </Link>
-          </li>
+          {myUser && (
+            <li>
+              <Link onClick={() => toggleSidebar("close")} to="/checkout">
+                Checkout
+              </Link>
+            </li>
+          )}
         </ul>
         <CartButtons />
       </aside>

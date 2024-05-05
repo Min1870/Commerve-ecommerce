@@ -7,6 +7,7 @@ import Products from "../pages/ProductsPage.tsx";
 import Error from "../pages/ErrorPage.tsx";
 import Checkout from "../pages/CheckoutPage.tsx";
 import SingleProduct from "../pages/SingleProductPage.tsx";
+import PrivateRoute from "./PrivateRoute.tsx";
 // import PrivateRoute from "./PrivateRoute.tsx";
 
 const router = createBrowserRouter([
@@ -38,7 +39,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/checkout",
-        element: <Checkout />,
+        element: (
+          <PrivateRoute>
+            <Checkout />
+          </PrivateRoute>
+        ),
       },
       {
         path: "*",
