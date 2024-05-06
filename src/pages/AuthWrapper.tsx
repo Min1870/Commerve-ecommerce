@@ -12,8 +12,7 @@ const AuthWrapper = ({ children }: AuthWrapperProps) => {
   if (isLoading) {
     return (
       <Wrapper>
-        {/* <h1>Loading...</h1> */}
-        <Loading/>
+        <Loading />
       </Wrapper>
     );
   }

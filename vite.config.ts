@@ -9,8 +9,8 @@ export default defineConfig(({ mode }) => {
     define: {
       'process.env.AUTH_DOMAIN': JSON.stringify(env.AUTH_DOMAIN),
       'process.env.AUTH_CLIENT_ID': JSON.stringify(env.AUTH_CLIENT_ID),
-      // 'process.env.STRIPE_API_KEY': JSON.stringify(env.STRIPE_API_KEY),
-      // 'process.env.STRIPE_SECRET_KEY': JSON.stringify(env.STRIPE_SECRET_KEY),
+      'process.env.STRIPE_API_KEY': JSON.stringify(env.STRIPE_API_KEY),
+      'process.env.STRIPE_SECRET_KEY': JSON.stringify(env.STRIPE_SECRET_KEY),
     },
     plugins: [react()],
   };

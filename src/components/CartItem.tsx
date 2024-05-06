@@ -9,9 +9,12 @@ import { FaTrash } from "react-icons/fa";
 const CartItem = ({ id, image, name, color, price, amount }: CartItemProps) => {
   const { removeItem, toggleAmount } = useCartContext();
 
-  const increase = () => {};
-
-  const decrease = () => {};
+  const increase = () => {
+    toggleAmount(id, "inc");
+  };
+  const decrease = () => {
+    toggleAmount(id, "dec");
+  };
 
   return (
     <Wrapper>

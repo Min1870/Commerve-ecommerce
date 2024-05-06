@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../context/Cart";
 import PageHero from "../components/PageHero";
-import CartContent from "../components/CarContent";
+import CartContent from "../components/CartContent";
 
 const CartPage = () => {
   const { cart } = useCartContext();
